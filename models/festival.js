@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Artist = require('../models/artist')
 const Schema   = mongoose.Schema;
 
 const festivalSchema = new Schema({
@@ -9,7 +10,7 @@ const festivalSchema = new Schema({
   genres: [String],
   fees: [{ description: String,
            price: Number }],
-  _artists: [Schema.Types.ObjectId]
+  _artists: [{type: Schema.Types.ObjectId, ref:'Artist'}]
 });
 
 const Festival = mongoose.model("Festival", festivalSchema);
