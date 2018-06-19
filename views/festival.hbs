@@ -1,17 +1,32 @@
-{{festival.name}}
+<h3>
+  Festival:
+</h3> {{festival.name}}
 <br>
-{{festival.startDate}}
+<h3>
+  Start date:
+</h3> {{festival.startDate}}
 <br>
-{{festival.endDate}}
+<h3>
+  End date:
+</h3> {{festival.endDate}}
 <br>
-{{festival.location}}<br>
-
+<h3>
+  Location:
+</h3> {{festival.location}}<br>
+<h3>
+  Genres:
+</h3> 
 {{#each festival.genres}}
-  {{this}}
+  - {{this}}
+  <br>
 {{/each}}<br>
 <br>
+<h3>Fees:</h3>
 {{festival.fees}}<br>
+
+<h3>Artists:</h3>
 {{#each festival._artists}}
-  {{this.name}}
+  - {{this.name}}
   <a href="/artist/{{this._id}}">Artist</a>
+  <br>
 {{/each}}
