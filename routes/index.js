@@ -20,11 +20,9 @@ router.get('/:festivalId', (req, res, next) => {
   Festival.findById(festivalId)
   .populate('_artists')
   .then((festival) => {
-    let data = {
-      festival: festival
-    }; 
+     
     console.log(festival.artists);
-    res.render('festival', data);
+    res.render('festival', festival);
   })
   .catch(err => {throw err})
 });
@@ -34,10 +32,8 @@ router.get('/artist/:artistId', (req, res, next) => {
   Artist.findById(artistId)
 
   .then((artist) => {
-    let data = {
-      artist: artist
-    }; 
-    res.render('artist', data);
+    
+    res.render('artist', artist);
   })
   .catch(err => {throw err})
 });
