@@ -4,6 +4,7 @@ const Schema   = mongoose.Schema;
 
 const festivalSchema = new Schema({
   name: { type: String, required: true },
+  url: { type: String},
   location: { type: String, required: true },
   startDate: { type: Date, required: true },
   endDate: { type: Date, required: true },

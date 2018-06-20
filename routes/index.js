@@ -15,6 +15,7 @@ router.get('/', (req, res, next) => {
   .catch(err => {throw err})
 });
 
+
 router.get('/:festivalId', (req, res, next) => {
   let festivalId = req.params.festivalId
   Festival.findById(festivalId)
@@ -36,6 +37,41 @@ router.get('/artist/:artistId', (req, res, next) => {
     res.render('artist', artist);
   })
   .catch(err => {throw err})
+});
+
+router.get('/festival/new', (req, res, next) => {
+  
+    
+    res.render('new-festival');
+ 
+});
+
+router.post('/festival/new', (req, res, next) => {
+  console.log(req.body);
+  
+  let {name, url, location, startDate, endDate, genre, feeDescription, price}=req.body;
+  let Fest = new Festival({
+    name,
+    url,
+    location,
+    startDate,
+    endDate,
+    genres: genre,
+    fees: [{description: feeDescription ,
+            price}]
+  })
+  Fest.save();
+
+  
+});
+
+router.get('/:festival/delete', (req, res, next) => {
+  let festivalId = req.params.festival;
+  Festival.findByIdAndRemove(festivalId).then(()=>{
+    res.redirect("/")
+  }
+)
+  
 });
 
 module.exports = router;
